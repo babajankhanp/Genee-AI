@@ -19,11 +19,12 @@ export const incrementApiLimit = async () => {
       where: { userId: userId },
       data: { count: userApiLimit.count + 1 },
     });
-  } else {
-    await prismadb.userApiLimit.create({
-      data: { userId: userId, count: 1 },
-    });
   }
+  // else {
+  //   await prismadb.userApiLimit.create({
+  //     data: { userId: userId, count: 1 },
+  //   });
+  // }
 };
 
 export const checkApiLimit = async () => {
