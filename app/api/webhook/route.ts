@@ -32,17 +32,17 @@ export async function POST(req: Request) {
       return new NextResponse("User id is required", { status: 400 });
     }
 
-    await prismadb.userSubscription.create({
-      data: {
-        userId: session?.metadata?.userId,
-        stripeSubscriptionId: subscription.id,
-        stripeCustomerId: subscription.customer as string,
-        stripePriceId: subscription.items.data[0].price.id,
-        stripeCurrentPeriodEnd: new Date(
-          subscription.current_period_end * 1000
-        ),
-      },
-    })
+    // await prismadb.userSubscription.create({
+    //   data: {
+    //     userId: session?.metadata?.userId,
+    //     stripeSubscriptionId: subscription.id,
+    //     stripeCustomerId: subscription.customer as string,
+    //     stripePriceId: subscription.items.data[0].price.id,
+    //     stripeCurrentPeriodEnd: new Date(
+    //       subscription.current_period_end * 1000
+    //     ),
+    //   },
+    // })
   }
 
   if (event.type === "invoice.payment_succeeded") {
